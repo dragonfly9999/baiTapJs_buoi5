@@ -144,15 +144,27 @@ document.getElementById("tinhThue").onclick = function () {
 // document.getElementById('hienKetNoi').onclick = function(){
 //     anKetNoi.style.display = 'block'
 // }
-function tienDichVuDoanhNghiep(soKenh){
-    var tienDichVu = 0;
-    if(soKenh <=10){
-         tienDichVu = 7.5 * soKenh;
+function toggleConnectionInput() {
+    var kiemTraloaiKH = document.getElementById("loaiKH").value;
+    var kiemTraHienThi = document.getElementById("ketNoiHienThi");
+
+    if (kiemTraloaiKH === "doanhNghiep") {
+        kiemTraHienThi.style.display = "block";
+    } else {
+        kiemTraHienThi.style.display = "none";
     }
-    else{
-    tienDichVu = 7.5 * 10 + (soKenh - 10)*5;
+}
+function tienDichVuDoanhNghiep(soKetNoi){
+    var tienDichVu = 75;
+    if(soKetNoi > 10){
+       tienDichVu  = tienDichVu + (soKetNoi - 10)*5
+       return tienDichVu;
+    }else{
+        tienDichVu = 75;
     }
-    return;
+    
+    
+    
 }
 
 document.getElementById('tinhTienCap').onclick = function(){
@@ -161,15 +173,16 @@ document.getElementById('tinhTienCap').onclick = function(){
     var soKetNoi = document.getElementById('soKetNoi').value *1;
     var soKenh = document.getElementById('soKenh').value *1;
     var tongTien = 0;
-  if(loaiKH === 'doanhNghiep'){
+  if(loaiKH === 'nhaDan'){
     var phiHoaDon = 4.5;
     var phiDichVu = 20.5;
     var phiThueKenh = 7.5 * soKenh;
-  }else if (loaiKH === 'nhaDan'){
+  }else if (loaiKH === 'doanhNghiep'){
     var phiHoaDon = 15;
-    var phiDichVu = tienDichVuDoanhNghiep(soKenh);
+    var phiDichVu = tienDichVuDoanhNghiep(soKetNoi);
     var phiThueKenh = 50 * soKenh;
   }
   tongTien = phiHoaDon + phiDichVu + phiThueKenh;
-console.log(tongTien)
+// console.log(tongTien)
+document.getElementById('tienCap').innerHTML = `Tiền cáp phải trả là: ${tongTien}$`
 }

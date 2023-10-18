@@ -115,13 +115,13 @@
 </div>
 <div class="mb-2 mt-3">
   <p>Loại Khách Hàng</p>
-  <select class="form-select" aria-label="Default select example" id="loaiKH">
+  <select class="form-select" aria-label="Default select example" onchange="toggleConnectionInput()" id="loaiKH">
       <option selected>Chọn Loại Khách Hàng</option>
       <option value="doanhNghiep" id="hienKetNoi">Doanh Nghiệp</option>
       <option value="nhaDan">Nhà Dân</option>
     </select>
  </div>
-<div class="mb-3" id="ketNoiHienThi">
+<div class="mb-3" id="ketNoiHienThi" style="display: none;"  >
   <label for="" class="form-label">Số Kết Nối</label>
   <input type="text"
     class="form-control" name="" id="soKetNoi" aria-describedby="helpId" placeholder="">
